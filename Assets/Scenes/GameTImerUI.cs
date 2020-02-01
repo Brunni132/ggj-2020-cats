@@ -18,8 +18,8 @@ public class GameTImerUI : MonoBehaviour
 
 	IEnumerator gameTimer() {
 		while(true) {
-			txt.text = timeLeft.ToString(); 
-			if(--timeLeft <= 0) SceneManager.LoadScene("LoseGame");
+			txt.text = timeLeft.ToString();
+			if(--timeLeft < 0) SceneManager.LoadScene("LoseGame");
 			yield return new WaitForSeconds(1);
 		}
     }
@@ -27,6 +27,6 @@ public class GameTImerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

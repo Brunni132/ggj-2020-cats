@@ -24,12 +24,23 @@ public class MouseCursor : MonoBehaviour
 
 
         bool affectedSomeone = false;
-        Color cursorColor = Color.red;
+        Color cursorColor = Color.white;
+
         if (Input.GetMouseButton(0)) {
-            foreach (Cat cat in FindObjectsOfType<Cat>()) {
-                if (cat.laserWasClicked(worldPos)) {
-                    cursorColor = cat.catColor;
+            foreach (Spring spring in FindObjectsOfType<Spring>()) {
+                if (spring.hits(worldPos)) {
+                    spring.laserDown(worldPos);
                     affectedSomeone = true;
+                    break;
+                }
+            }
+
+            if (!affectedSomeone) {
+                foreach (Cat cat in FindObjectsOfType<Cat>()) {
+                    if (cat.laserWasClicked(worldPos)) {
+                        cursorColor = cat.catColor;
+                        affectedSomeone = true;
+                    }
                 }
             }
         }

@@ -5,5 +5,4 @@ using UnityEngine;
 public interface InteractableObject {
 
     void onCollidedWithCat(Cat cat);
-
 }

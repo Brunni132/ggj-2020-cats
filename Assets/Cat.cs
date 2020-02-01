@@ -12,6 +12,8 @@ public class Cat : MonoBehaviour
     public int direction = 1; // initial direction
     public float catVelocity = 1;
     public Color catColor;
+    public SpriteRenderer fishIcon;
+    internal bool hasPickupFish = false;
     private const int wallLayer = 1 << 8;
 
     public Rigidbody2D rigidBody {
@@ -34,15 +36,14 @@ public class Cat : MonoBehaviour
         // }
 
         if (collides(leftCollider)) {
-            UnityEngine.Debug.LogWarningFormat("TEMP left");
             direction = +1;
         }
         if (collides(rightCollider)) {
-            UnityEngine.Debug.LogWarningFormat("TEMP right");
             direction = -1;
         }
 
         catSprite.transform.localScale = new Vector3(direction, 1, 1);
+        fishIcon.gameObject.SetActive(hasPickupFish);
     }
 
     // Overrides
@@ -50,6 +51,10 @@ public class Cat : MonoBehaviour
         var cat = other.gameObject.GetComponent<Cat>();
         if (cat != null) {
             cat.collidedWithCat(this);
+        }
+        var interactable = other.gameObject.GetComponent<InteractableObject>();
+        if (interactable != null) {
+            interactable.onCollidedWithCat(this);
         }
     }
 
