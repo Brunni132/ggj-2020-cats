@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class MouseCursor : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
         Cursor.visible = false;
     }
-
 
     void setLaserColor(Color color) {
         GetComponent<SpriteRenderer>().color = color;
