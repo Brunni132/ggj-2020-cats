@@ -9,7 +9,10 @@ public class Cat : MonoBehaviour
     public int direction = 1; // initial direction
     public float catVelocity = 1;
     private const int wallLayer = 1 << 8;
-    private bool isGrounded = false;
+
+    public Rigidbody2D rigidBody {
+        get { return GetComponent<Rigidbody2D>(); }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +22,9 @@ public class Cat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if (collides(bottomCollider)) {
-            var pos = transform.position;
-            pos.x += catVelocity * direction * Time.deltaTime;
-            transform.position = pos;
-        // }
+        var pos = transform.position;
+        pos.x += catVelocity * direction * Time.deltaTime;
+        transform.position = pos;
 
         if (collides(leftCollider)) {
             UnityEngine.Debug.LogWarningFormat("TEMP left");
@@ -41,10 +42,10 @@ public class Cat : MonoBehaviour
         return Physics2D.OverlapCircle(obj.transform.position, 0.01f, wallLayer);
     }
 
-    // private void OnCollisionEnter2D(Collision2D other) {
-    //     if (other.gameObject.tag != "wall") return;
-
-    //     // Grounded -> the cat can be moving
-    //     isGrounded = collides(bottomCollider);
-    // }
+    private void OnTriggerEnter2D(Collider2D other) {
+        var interactable = other.gameObject.GetComponent<InteractableObject>();
+        if (interactable != null) {
+            interactable.onCollidedWithCat(this);
+        }
+    }
 }
