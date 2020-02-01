@@ -11,6 +11,7 @@ public class Cat : MonoBehaviour
     public SpriteRenderer catSprite;
     public int direction = 1; // initial direction
     public float catVelocity = 1;
+    public Color catColor;
     private const int wallLayer = 1 << 8;
 
     public Rigidbody2D rigidBody {
@@ -20,6 +21,7 @@ public class Cat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GetComponentInChildren<SpriteRenderer>().color = catColor;
     }
 
     // Update is called once per frame
@@ -59,11 +61,13 @@ public class Cat : MonoBehaviour
     }
 
     // Notifications
-    public void laserWasClicked(Vector3 worldPosition)
+    public bool laserWasClicked(Vector3 worldPosition)
     {
         if (Math.Abs(worldPosition.y - transform.position.y) < BLOCK_SIZE) {
             direction = worldPosition.x > transform.position.x ? +1 : -1;
+            return true;
         }
+        return false;
     }
 
     public void collidedWithCat(Cat otherCat) {

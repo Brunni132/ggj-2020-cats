@@ -7,7 +7,12 @@ public class MouseCursor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
+    }
 
+
+    void setLaserColor(Color color) {
+        GetComponent<SpriteRenderer>().color = color;
     }
 
     // Update is called once per frame
@@ -18,10 +23,18 @@ public class MouseCursor : MonoBehaviour
         this.transform.position = worldPos;
 
 
-        if (Input.GetMouseButtonDown(0)) {
+        bool affectedSomeone = false;
+        Color cursorColor = Color.red;
+        if (Input.GetMouseButton(0)) {
             foreach (Cat cat in FindObjectsOfType<Cat>()) {
-                cat.laserWasClicked(worldPos);
+                if (cat.laserWasClicked(worldPos)) {
+                    cursorColor = cat.catColor;
+                    affectedSomeone = true;
+                }
             }
         }
+
+        transform.localScale = new Vector3(affectedSomeone ? 2 : 1, affectedSomeone ? 2 : 1, 1);
+        setLaserColor(cursorColor);
     }
 }
