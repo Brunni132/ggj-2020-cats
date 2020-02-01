@@ -19,11 +19,11 @@ public class Cat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (collides(bottomCollider)) {
+        // if (collides(bottomCollider)) {
             var pos = transform.position;
             pos.x += catVelocity * direction * Time.deltaTime;
             transform.position = pos;
-        }
+        // }
 
         if (collides(leftCollider)) {
             UnityEngine.Debug.LogWarningFormat("TEMP left");
