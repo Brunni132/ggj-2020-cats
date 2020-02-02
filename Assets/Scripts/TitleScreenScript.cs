@@ -11,14 +11,14 @@ public class TitleScreenScript : MonoBehaviour
     void Start()
     {
 		titleMusic = GetComponent<AudioSource>();
-		titleMusic.Play();    
+		titleMusic.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
        if(Input.GetMouseButtonDown(0)) {
-		  SceneManager.LoadScene("SampleScene");
-	   } 
+		  SceneManager.LoadScene("MainGameScene");
+	   }
     }
 }
