@@ -6,7 +6,7 @@ public class Cat : MonoBehaviour
 {
     public const float BLOCK_SIZE = 1;
     public GameObject leftCollider, rightCollider, bottomCollider, bottomCollider2;
-    public SpriteRenderer catSprite;
+    public GameObject catContainer;
     public float diesAfterDrowningForSeconds = 20;
     public int direction = 1; // initial direction
     public float catVelocity = 1;
@@ -15,6 +15,8 @@ public class Cat : MonoBehaviour
     internal bool hasPickupFish = false;
     private float drowningForSeconds = 0;
     private const int wallLayer = 1 << 8;
+    public SkinnedMeshRenderer colorableCatBody;
+    public Animator animator;
 
     public Rigidbody2D rigidBody {
         get { return GetComponent<Rigidbody2D>(); }
@@ -23,7 +25,7 @@ public class Cat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponentInChildren<SpriteRenderer>().color = catColor;
+        colorableCatBody.material.SetColor("_EmissionColor", catColor);
     }
 
     // Update is called once per frame
@@ -49,7 +51,12 @@ public class Cat : MonoBehaviour
             }
         }
 
-        catSprite.transform.localScale = new Vector3(direction, 1, 1);
+        animator.SetBool("OnTheGround", collides(bottomCollider) || collides(bottomCollider2));
+
+        var rotation = catContainer.transform.localEulerAngles;
+        rotation.y = 90 * direction;
+        catContainer.transform.localEulerAngles = rotation;
+
         fishIcon.gameObject.SetActive(hasPickupFish);
         helpIcon.color = Color.Lerp(Color.white,
             Color.Lerp(Color.yellow, Color.red, 2 * drowningForSeconds / diesAfterDrowningForSeconds - 0.5f),

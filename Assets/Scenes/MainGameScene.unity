@@ -334,6 +334,12 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!137 &45537582 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5021701328282844509, guid: 1fb43b22cb1465c4d9cd3ad090195374,
+    type: 3}
+  m_PrefabInstance: {fileID: 1897210776}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &85323706
 GameObject:
   m_ObjectHideFlags: 0
@@ -10755,12 +10761,12 @@ PrefabInstance:
     - target: {fileID: 7344171126438381904, guid: 1fb43b22cb1465c4d9cd3ad090195374,
         type: 3}
       propertyPath: catColor.g
-      value: 0.8784314
+      value: 0.65498835
       objectReference: {fileID: 0}
     - target: {fileID: 7344171126438381904, guid: 1fb43b22cb1465c4d9cd3ad090195374,
         type: 3}
       propertyPath: catColor.b
-      value: 0.48584908
+      value: 0.02745098
       objectReference: {fileID: 0}
     - target: {fileID: 7344171126438381904, guid: 1fb43b22cb1465c4d9cd3ad090195374,
         type: 3}
@@ -10772,6 +10778,11 @@ PrefabInstance:
       propertyPath: direction
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7344171126438381904, guid: 1fb43b22cb1465c4d9cd3ad090195374,
+        type: 3}
+      propertyPath: colorableCatBody
+      value: 
+      objectReference: {fileID: 45537582}
     - target: {fileID: 7344171126438381909, guid: 1fb43b22cb1465c4d9cd3ad090195374,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10831,6 +10842,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cat-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344171126438381911, guid: 1fb43b22cb1465c4d9cd3ad090195374,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fb43b22cb1465c4d9cd3ad090195374, type: 3}
