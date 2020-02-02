@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
@@ -89,7 +87,6 @@ public class Cat : MonoBehaviour
     }
 
     public void collidedWithCat(Cat otherCat) {
-        UnityEngine.Debug.LogWarningFormat("TEMP win");
         SceneManager.LoadScene("GameFinished");
     }
 

@@ -390,7 +390,7 @@ MonoBehaviour:
   bottomCollider: {fileID: 7344171126397823910}
   bottomCollider2: {fileID: 7344171125750050210}
   catSprite: {fileID: 7344171126092591761}
-  diesAfterDrowningForSeconds: 30
+  diesAfterDrowningForSeconds: 20
   direction: 1
   catVelocity: 1
   catColor: {r: 0, g: 1, b: 0, a: 1}
