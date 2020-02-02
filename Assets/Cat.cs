@@ -9,11 +9,13 @@ public class Cat : MonoBehaviour
     public const float BLOCK_SIZE = 1;
     public GameObject leftCollider, rightCollider, bottomCollider, bottomCollider2;
     public SpriteRenderer catSprite;
+    public float diesAfterDrowningForSeconds = 20;
     public int direction = 1; // initial direction
     public float catVelocity = 1;
     public Color catColor;
-    public SpriteRenderer fishIcon;
+    public SpriteRenderer fishIcon, helpIcon;
     internal bool hasPickupFish = false;
+    private float drowningForSeconds = 0;
     private const int wallLayer = 1 << 8;
 
     public Rigidbody2D rigidBody {
@@ -42,8 +44,19 @@ public class Cat : MonoBehaviour
             direction = -1;
         }
 
+        if (drowningForSeconds > 0) {
+            drowningForSeconds += Time.deltaTime;
+			if (drowningForSeconds > diesAfterDrowningForSeconds) {
+                SceneManager.LoadScene("LoseGame");
+            }
+        }
+
         catSprite.transform.localScale = new Vector3(direction, 1, 1);
         fishIcon.gameObject.SetActive(hasPickupFish);
+        helpIcon.color = Color.Lerp(Color.white,
+            Color.Lerp(Color.yellow, Color.red, 2 * drowningForSeconds / diesAfterDrowningForSeconds - 0.5f),
+            2 * drowningForSeconds / diesAfterDrowningForSeconds);
+        helpIcon.gameObject.SetActive(drowningForSeconds > 0 && drowningForSeconds - Mathf.Floor(drowningForSeconds) < 0.8f);
     }
 
     // Overrides
@@ -78,6 +91,14 @@ public class Cat : MonoBehaviour
     public void collidedWithCat(Cat otherCat) {
         UnityEngine.Debug.LogWarningFormat("TEMP win");
         SceneManager.LoadScene("GameFinished");
+    }
+
+    public void notifyWaterLevel(float level) {
+        if (transform.position.y < level) {
+            drowningForSeconds = Mathf.Max(0.01f, drowningForSeconds);
+        } else {
+            drowningForSeconds = 0;
+        }
     }
 
     // Private
