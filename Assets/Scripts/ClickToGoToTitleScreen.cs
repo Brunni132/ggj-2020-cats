@@ -9,15 +9,15 @@ public class ClickToGoToTitleScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sound = GetComponent<AudioSource>();
-		sound.Play();
+        sound = GetComponentInChildren<AudioSource>();
+		    sound.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
 		if(Input.GetMouseButtonDown(0)) {
-			SceneManager.LoadScene("TitleScreen");		
+			SceneManager.LoadScene("TitleScreen");
 		}
     }
 }
