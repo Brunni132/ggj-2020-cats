@@ -11408,6 +11408,21 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7430314307011469472, guid: 7de5e0b0d208d5e42a5a3368e4d96d00,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7430314307011469472, guid: 7de5e0b0d208d5e42a5a3368e4d96d00,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7430314307011469472, guid: 7de5e0b0d208d5e42a5a3368e4d96d00,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.21
+      objectReference: {fileID: 0}
     - target: {fileID: 7430314307011469473, guid: 7de5e0b0d208d5e42a5a3368e4d96d00,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11467,6 +11482,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Spring
+      objectReference: {fileID: 0}
+    - target: {fileID: 7430314308165419313, guid: 7de5e0b0d208d5e42a5a3368e4d96d00,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.202
+      objectReference: {fileID: 0}
+    - target: {fileID: 7430314308165419313, guid: 7de5e0b0d208d5e42a5a3368e4d96d00,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7430314308165419313, guid: 7de5e0b0d208d5e42a5a3368e4d96d00,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7430314308165419313, guid: 7de5e0b0d208d5e42a5a3368e4d96d00,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7de5e0b0d208d5e42a5a3368e4d96d00, type: 3}
