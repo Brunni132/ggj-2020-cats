@@ -10722,7 +10722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1867139045
 Transform:
   m_ObjectHideFlags: 0
@@ -11318,11 +11318,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7344171126438381904, guid: 1fb43b22cb1465c4d9cd3ad090195374,
-        type: 3}
-      propertyPath: diesAfterDrowningForSeconds
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 7344171126438381909, guid: 1fb43b22cb1465c4d9cd3ad090195374,
         type: 3}
       propertyPath: m_LocalPosition.x
