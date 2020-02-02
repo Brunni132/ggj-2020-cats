@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MouseCursor : MonoBehaviour
 {
+    private static Color DEFAULT_POINTER_COLOR = Color.white;
+    private Color pointerColor = DEFAULT_POINTER_COLOR;
 
     // Start is called before the first frame update
     void Start()
@@ -22,11 +24,12 @@ public class MouseCursor : MonoBehaviour
         worldPos.z = transform.position.z;
         this.transform.position = worldPos;
 
+        if (Input.GetMouseButtonUp(0)) {
+            pointerColor = DEFAULT_POINTER_COLOR;
+        }
 
-        bool affectedSomeone = false;
-        Color cursorColor = Color.white;
-
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetMouseButtonDown(0)) {
+            bool affectedSomeone = false;
             foreach (Spring spring in FindObjectsOfType<Spring>()) {
                 if (spring.hits(worldPos)) {
                     spring.laserDown(worldPos);
@@ -38,14 +41,15 @@ public class MouseCursor : MonoBehaviour
             if (!affectedSomeone) {
                 foreach (Cat cat in FindObjectsOfType<Cat>()) {
                     if (cat.laserWasClicked(worldPos)) {
-                        cursorColor = cat.catColor;
+                        pointerColor = cat.catColor;
                         affectedSomeone = true;
                     }
                 }
             }
         }
 
-        transform.localScale = new Vector3(affectedSomeone ? 2 : 1, affectedSomeone ? 2 : 1, 1);
-        setLaserColor(cursorColor);
+        bool nonDefaultColor = pointerColor != DEFAULT_POINTER_COLOR;
+        transform.localScale = new Vector3(nonDefaultColor ? 2 : 1, nonDefaultColor ? 2 : 1, 1);
+        setLaserColor(pointerColor);
     }
 }

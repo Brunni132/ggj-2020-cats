@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Tile fullTile, replaceableTile, fishSpawnTile;
     public GameObject fishPrefab;
     private static Random random = new Random();
+    public AudioSource SndInoutWater, SndBumper, SndLaserPointer;
 
     private TileBase GetTile(int x, int y) {
         return tilemap.GetTile(new Vector3Int(x, y, 0));
@@ -84,9 +85,15 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    public static void playInoutWaterSound() {
+        FindObjectOfType<GameManager>().SndInoutWater.Play();
+    }
 
+    public static void playBumperSound() {
+        FindObjectOfType<GameManager>().SndBumper.Play();
+    }
+
+    public static void playLaserPointerSound() {
+        FindObjectOfType<GameManager>().SndLaserPointer.Play();
     }
 }

@@ -88,6 +88,7 @@ public class Cat : MonoBehaviour
     {
         if (Math.Abs(worldPosition.y - transform.position.y) < BLOCK_SIZE) {
             direction = worldPosition.x > transform.position.x ? +1 : -1;
+            GameManager.playLaserPointerSound();
             return true;
         }
         return false;
@@ -99,6 +100,7 @@ public class Cat : MonoBehaviour
 
     public void notifyWaterLevel(float level) {
         if (transform.position.y < level) {
+            if (drowningForSeconds < Mathf.Epsilon) GameManager.playInoutWaterSound();
             drowningForSeconds = Mathf.Max(0.01f, drowningForSeconds);
         } else {
             drowningForSeconds = 0;

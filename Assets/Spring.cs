@@ -13,6 +13,7 @@ public class Spring : MonoBehaviour, InteractableObject
         var vel = cat.rigidBody.velocity;
         vel.y = jumpImpulse;
         cat.rigidBody.velocity = vel;
+        GameManager.playBumperSound();
     }
 
     public bool hits(Vector3 worldPosition) {
